@@ -21,10 +21,10 @@ AS
     )
 
     -- Establecemos o valor para a variable @fileDate como a data en formato YYYYMMDD
-    SET @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112)
+    -- SET @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112)
 
     -- Establecemos o valor para a variable @fileDate como a data en formato YYYYMMDD_hh:mm:ss
-    -- SET @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112) + '_' + REPLACE(CONVERT(VARCHAR(20), GETDATE(), 108), ':', '')
+     SET @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112) + '_' + REPLACE(CONVERT(VARCHAR(20), GETDATE(), 108), ':', '')
 
     INSERT INTO [dbo].#tempBackup (name)
         SELECT name
@@ -38,7 +38,7 @@ AS
         FROM [dbo].#tempBackup
 
     -- mostramos el nro de backups que va a realizar
-    print 'Número de BDs a guardar: ' + @backupCount
+    print 'Número de BDs a guardar: ' + convert(varchar(50), @backupCount)
 
     IF ((@backupCount IS NOT NULL) AND (@backupCount > 0)) BEGIN
         DECLARE @currentBackup INT
