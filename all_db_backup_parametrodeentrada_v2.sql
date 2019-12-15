@@ -1,4 +1,4 @@
--- Script Backup BD
+-- Script Backup BD-versión Efrén
 USE master
 GO
 
